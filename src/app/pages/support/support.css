@@ -1,0 +1,107 @@
+.support-page {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 90px 24px;
+}
+
+.support-header {
+  max-width: 700px;
+  margin-bottom: 60px;
+}
+
+.eyebrow {
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.support-header h1 {
+  margin: 10px 0 20px;
+
+  color: #111827;
+  font-size: 60px;
+  line-height: 1.05;
+}
+
+.support-header h1 span {
+  color: #2563eb;
+}
+
+.support-header > p:last-child {
+  color: #6b7280;
+
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.support-card {
+  padding: 32px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+
+  color: #2563eb;
+  background: #eff6ff;
+
+  border-radius: 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.support-card h2 {
+  margin: 0 0 12px;
+
+  color: #111827;
+  font-size: 22px;
+}
+
+.support-card p {
+  min-height: 75px;
+
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.support-card a {
+  color: #2563eb;
+
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.support-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .support-header h1 {
+    font-size: 44px;
+  }
+
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+}
