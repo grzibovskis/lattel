@@ -5,18 +5,66 @@
     <div class="top-bar-content">
 
       <div class="top-actions">
-        <button class="icon-btn" aria-label="Search">
-          <span class="material-icons">search</span>
-        </button>
+
+        <div class="search-wrapper" #searchWrapper>
+          <button
+            class="icon-btn"
+            aria-label="Search"
+            (click)="toggleSearch(); $event.stopPropagation()"
+          >
+            <span class="material-icons">search</span>
+          </button>
+
+          @if (searchOpen) {
+
+            <div class="search-dropdown" (click)="$event.stopPropagation()">
+
+              <input
+                type="text"
+                placeholder="Search phones..."
+                [(ngModel)]="searchTerm"
+              >
+
+              <div class="search-results">
+
+                @for (phone of filteredPhones; track phone.title) {
+
+                  <a
+                    routerLink="/mobile-shop"
+                    (click)="closeSearch()"
+                    class="search-item"
+                  >
+                    <span class="material-icons">smartphone</span>
+                    {{ phone.title }}
+                  </a>
+
+                }
+
+                @if (filteredPhones.length === 0) {
+
+                  <div class="no-results">
+                    No phones found
+                  </div>
+
+                }
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
 
         <button class="icon-btn" aria-label="Shopping Cart">
           <span class="material-icons">shopping_cart</span>
         </button>
 
-        <a routerLink="/login" class="login-link">
+        <a routerLink="/login" class="login-link" (click)="closeSearch()">
           <span class="material-icons">person</span>
           Login
         </a>
+
       </div>
 
     </div>
@@ -31,10 +79,10 @@
       </a>
 
       <nav class="nav-links">
-        <a routerLink="/mobile" routerLinkActive="active">Mobile</a>
-        <a routerLink="/internet" routerLinkActive="active">Internet</a>
-        <a routerLink="/tv" routerLinkActive="active">TV</a>
-        <a routerLink="/support" routerLinkActive="active">Support</a>
+        <a routerLink="/mobile" routerLinkActive="active" (click)="closeSearch()">Mobile</a>
+        <a routerLink="/internet" routerLinkActive="active" (click)="closeSearch()">Internet</a>
+        <a routerLink="/tv" routerLinkActive="active" (click)="closeSearch()">TV</a>
+        <a routerLink="/support" routerLinkActive="active" (click)="closeSearch()">Support</a>
       </nav>
 
     </div>
