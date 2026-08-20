@@ -185,6 +185,148 @@ h1 span {
   font-weight: 700;
 }
 
+.hero {
+  padding: 80px 20px;
+  background: linear-gradient(135deg,#eef6ff,#ffffff);
+}
+
+.hero-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.hero h1{
+  font-size:3.4rem;
+  line-height:1.1;
+  margin:16px 0;
+}
+
+.hero h1 span{
+  display:block;
+  color:#0d6efd;
+}
+
+.description{
+  font-size:1.1rem;
+  color:#555;
+  margin-bottom:30px;
+}
+
+.actions{
+  display:flex;
+  gap:15px;
+}
+
+.primary-button,
+.secondary-button{
+  padding:14px 28px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.primary-button{
+  background:#0d6efd;
+  color:white;
+}
+
+.secondary-button{
+  border:2px solid #0d6efd;
+  color:#0d6efd;
+}
+
+/* Phone card */
+
+.phone-card{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:white;
+  border-radius:24px;
+  padding:35px;
+  text-decoration:none;
+  color:inherit;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.phone-card:hover{
+  transform:translateY(-8px);
+}
+
+.phone-card::before{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  background:#0d6efd15;
+  border-radius:50%;
+  right:-60px;
+  top:-60px;
+}
+
+.phone-text{
+  max-width:220px;
+  z-index:2;
+}
+
+.phone-text h2{
+  margin:10px 0;
+}
+
+.shop-now{
+  display:inline-block;
+  margin-top:20px;
+  color:#0d6efd;
+  font-weight:700;
+}
+
+.phone-image{
+  width:220px;
+  transform:rotate(-18deg);
+  transition:.4s;
+  z-index:2;
+}
+
+.phone-card:hover .phone-image{
+  transform:rotate(-12deg) scale(1.05);
+}
+
+.eyebrow{
+  color:#0d6efd;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+@media(max-width:900px){
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.phone-card{
+flex-direction:column;
+text-align:center;
+gap:20px;
+}
+
+.phone-image{
+width:180px;
+}
+
+}
+
 @media (max-width: 800px) {
   h1 {
     font-size: 45px;

@@ -1,0 +1,66 @@
+<section class="shop-hero">
+
+  <div class="shop-container">
+
+    <div class="shop-header">
+      <h1>Find your next phone</h1>
+
+      <p>
+        Explore the latest smartphones and choose the perfect device.
+      </p>
+    </div>
+
+    <div class="search-bar">
+
+      <input
+        type="text"
+        placeholder="Search phones..."
+        [(ngModel)]="searchTerm"
+      >
+
+      <button type="button">
+        Search
+      </button>
+
+    </div>
+
+    <div class="phone-grid">
+
+      @for (phone of filteredPhones; track phone.title) {
+
+        <div class="phone-item">
+
+          <div class="phone-image-wrapper">
+            <img
+              [src]="phone.image"
+              [alt]="phone.title"
+              class="phone-image"
+            >
+          </div>
+
+          <h3>{{ phone.title }}</h3>
+
+          <p>{{ phone.description }}</p>
+
+          <div class="phone-price">
+            ${{ phone.price }}
+          </div>
+
+          <button>Buy now</button>
+
+        </div>
+
+      }
+
+    </div>
+
+    @if (filteredPhones.length === 0) {
+      <div class="no-results">
+        <h3>No phones found</h3>
+        <p>Try searching for "Galaxy" or "iPhone".</p>
+      </div>
+    }
+
+  </div>
+
+</section>
