@@ -56,9 +56,62 @@
 
         </div>
 
-        <button class="icon-btn" aria-label="Shopping Cart">
-          <span class="material-icons">shopping_cart</span>
-        </button>
+        <div class="cart-wrapper" #cartWrapper>
+
+          <button
+            class="icon-btn"
+            aria-label="Shopping Cart"
+            (click)="toggleCart(); $event.stopPropagation()">
+
+            <span class="material-icons">shopping_cart</span>
+
+            @if (cartService.totalItems > 0) {
+              <span class="cart-badge">{{ cartService.totalItems }}</span>
+            }
+
+          </button>
+
+          @if (cartOpen) {
+
+            <div class="cart-dropdown" (click)="$event.stopPropagation()">
+
+              <h3>Shopping Cart</h3>
+
+              @if (cartItems.length === 0) {
+
+                <div class="empty-cart">
+                  No items in cart
+                </div>
+
+              } @else {
+
+                <div class="cart-items">
+
+                  @for (item of cartItems; track item.title) {
+
+                    <div class="cart-item">
+
+                      <img [src]="item.image" [alt]="item.title">
+
+                      <div class="cart-info">
+                        <strong>{{ item.title }}</strong>
+                        <div>${{ item.price }}</div>
+                        <div>Quantity: {{ item.quantity }}</div>
+                      </div>
+
+                    </div>
+
+                  }
+
+                </div>
+
+              }
+
+            </div>
+
+          }
+
+        </div>
 
         <a routerLink="/login" class="login-link" (click)="closeSearch()">
           <span class="material-icons">person</span>

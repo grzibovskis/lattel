@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
 
 interface Phone {
   title: string;
@@ -17,6 +18,11 @@ interface Phone {
 })
 export class MobileShop {
 
+  constructor(private cartService: CartService) {}
+
+  buyNow(phone: Phone) {
+    this.cartService.addToCart(phone);
+  }
   searchTerm = '';
 
   phones: Phone[] = [

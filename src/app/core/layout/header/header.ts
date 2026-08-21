@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-
+import { CartService, CartItem } from '../../../services/cart.service';
 
 interface Phone {
   title: string;
@@ -18,10 +18,33 @@ interface Phone {
   styleUrl: './header.css'
 })
 export class Header {
-    @ViewChild('searchWrapper')
+  constructor(public cartService: CartService) {}
+  @ViewChild('searchWrapper')
   searchWrapper!: ElementRef;
+
+  @ViewChild('cartWrapper')
+  cartWrapper!: ElementRef;
+
   searchOpen = false;
   searchTerm = '';
+
+  cartOpen = false;
+
+  toggleCart() {
+    this.cartOpen = !this.cartOpen;
+
+    if (this.cartOpen) {
+      this.searchOpen = false;
+    }
+  }
+
+  closeCart() {
+    this.cartOpen = false;
+  }
+
+  get cartItems(): CartItem[] {
+    return this.cartService.items;
+  }
 
   phones: Phone[] = [
     { title: 'Galaxy FE' },
@@ -34,6 +57,10 @@ export class Header {
 
   toggleSearch() {
     this.searchOpen = !this.searchOpen;
+
+    if (this.searchOpen) {
+      this.cartOpen = false;
+    }
 
     if (!this.searchOpen) {
       this.searchTerm = '';
@@ -60,6 +87,10 @@ export class Header {
   onDocumentClick() {
     if (this.searchOpen) {
       this.closeSearch();
+    }
+
+    if (this.cartOpen) {
+      this.closeCart();
     }
   }
 }
